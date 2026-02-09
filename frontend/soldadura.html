@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Servicios especializados de soldadura MIG, TIG, arco eléctrico y soldadura de precisión para todo tipo de metales">
+
+    <!-- Seguridad -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>Servicios de Soldadura - Oscon</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <!-- Header Dinámico -->
+    <div id="header-container"></div>
+    <script>
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(html => { document.getElementById('header-container').innerHTML = html; });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-background"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">
+                <i class="fas fa-fire" style="color: var(--accent-color);"></i>
+                Servicios de <span class="gradient-text">Soldadura</span>
+            </h1>
+            <p class="hero-subtitle">
+                Soldadura especializada de alta precisión para todo tipo de metales y aplicaciones industriales
+            </p>
+        </div>
+    </section>
+
+    <!-- Detalles del Servicio -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <h2 class="section-title">Tipos de Soldadura que Ofrecemos</h2>
+                <p class="section-subtitle">Tecnología de punta y soldadores certificados</p>
+            </div>
+
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <!-- Soldadura MIG/MAG -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Soldadura MIG/MAG</h3>
+                        <p>Soldadura con alambre continuo bajo atmósfera protectora, ideal para aceros al carbono y
+                            aceros aleados.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Alta velocidad</li>
+                            <li><i class="fas fa-check"></i> Excelente acabado</li>
+                            <li><i class="fas fa-check"></i> Versatilidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Soldadura TIG -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Soldadura TIG</h3>
+                        <p>Soldadura de precisión con electrodo de tungsteno, perfecta para aceros inoxidables y
+                            aluminio.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Máxima precisión</li>
+                            <li><i class="fas fa-check"></i> Acabado impecable</li>
+                            <li><i class="fas fa-check"></i> Sin salpicaduras</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Arco Eléctrico -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-charging-station"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Arco Eléctrico (SMAW)</h3>
+                        <p>Soldadura manual con electrodo revestido, ideal para trabajos de campo y reparaciones.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Portabilidad</li>
+                            <li><i class="fas fa-check"></i> Robustez</li>
+                            <li><i class="fas fa-check"></i> Versatilidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Soldadura de Aluminio -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Soldadura de Aluminio</h3>
+                        <p>Soldadura especializada en aluminio y sus aleaciones con tecnología TIG.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Alta calidad</li>
+                            <li><i class="fas fa-check"></i> Resistencia</li>
+                            <li><i class="fas fa-check"></i> Durabilidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Soldadura de Acero Inoxidable -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Acero Inoxidable</h3>
+                        <p>Soldadura de acero inoxidable para aplicaciones que requieren resistencia a la corrosión.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Anticorrosivo</li>
+                            <li><i class="fas fa-check"></i> Higiénico</li>
+                            <li><i class="fas fa-check"></i> Estético</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Soldadura Especializada -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Soldadura Especializada</h3>
+                        <p>Soldaduras de alta exigencia: tuberías, recipientes a presión, estructuras críticas.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Certificada</li>
+                            <li><i class="fas fa-check"></i> Normas AWS</li>
+                            <li><i class="fas fa-check"></i> Inspección</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificaciones -->
+            <div style="margin-top: 4rem;">
+                <div class="section-header-centered">
+                    <h2 class="section-title">Nuestras Certificaciones</h2>
+                    <p class="section-subtitle">Calidad garantizada por estándares internacionales</p>
+                </div>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div
+                        style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px;">
+                        <i class="fas fa-award"
+                            style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h3>AWS D1.1</h3>
+                        <p style="opacity: 0.8;">Código de soldadura estructural en acero</p>
+                    </div>
+                    <div
+                        style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px;">
+                        <i class="fas fa-certificate"
+                            style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h3>ASME IX</h3>
+                        <p style="opacity: 0.8;">Calificación de soldadores</p>
+                    </div>
+                    <div
+                        style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px;">
+                        <i class="fas fa-check-circle"
+                            style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h3>ISO 9001</h3>
+                        <p style="opacity: 0.8;">Gestión de calidad</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div
+                style="text-align: center; margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,182,47,0.1)); border-radius: 20px;">
+                <h2 style="margin-bottom: 1rem;">¿Necesita servicios de soldadura?</h2>
+                <p style="margin-bottom: 2rem; opacity: 0.8;">Nuestros especialistas están listos para ayudarle</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='contacto.html'">
+                        <i class="fas fa-paper-plane"></i>
+                        Solicitar Cotización
+                    </button>
+                    <button class="btn btn-outline"
+                        onclick="window.location.href='catalogo.html?servicio=soldadura'">
+                        <i class="fas fa-folder-open"></i>
+                        Ver Catálogo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Dinámico -->
+    <div id="footer-container"></div>
+    <script>
+        fetch('includes/footer.html')
+            .then(response => response.text())
+            .then(html => { document.getElementById('footer-container').innerHTML = html; });
+    </script>
+</body>
+
+</html>

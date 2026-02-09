@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contáctenos para solicitar información sobre nuestros servicios de fabricación y soldadura industrial">
+
+    <!-- Seguridad -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>Contacto - Oscon</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <!-- Header Dinámico -->
+    <div id="header-container"></div>
+
+    <section class="contact-section" id="contacto" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header-centered">
+                <h1 class="section-title">Contáctanos</h1>
+                <p class="section-subtitle">Estamos listos para ayudarte con tu proyecto</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Ubicación</strong>
+                            <span>Ciudad Industrial, México</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <span>+52 (555) 123-4567</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <span>contacto@oscon.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horario</strong>
+                            <span>Lun - Vie: 8:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="mensaje-enviado.html" method="GET">
+                    <div class="form-group">
+                        <label for="name">Nombre *</label>
+                        <input type="text" id="name" name="name" required minlength="3" maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" maxlength="15">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Servicio de Interés *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Seleccionar servicio</option>
+                            <option value="fabricacion">Fabricación</option>
+                            <option value="soldadura">Soldadura</option>
+                            <option value="ambos">Ambos servicios</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje *</label>
+                        <textarea id="message" name="message" rows="4" required minlength="10"
+                            maxlength="1000"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Dinámico -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/components.js"></script>
+    <script type="module" src="assets/js/firebase-config.js"></script>
+</body>
+
+</html>
