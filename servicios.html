@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios profesionales de fabricación y soldadura industrial - OSCON">
+
+    <!-- Seguridad -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>Servicios - Oscon</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <!-- Header Dinámico -->
+    <div id="header-container"></div>
+    <script>
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(html => { document.getElementById('header-container').innerHTML = html; });
+    </script>
+
+    <!-- Sección de Servicios -->
+    <section class="services-section" id="servicios" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header-centered">
+                <h1 class="section-title">Nuestros Servicios</h1>
+                <p class="section-subtitle">Soluciones integrales para la industria</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Fabricación -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="service-content">
+                        <h2>Fabricación</h2>
+                        <p>Fabricación de estructuras metálicas, tanques industriales, escaleras, barandales y trabajos
+                            personalizados.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Estructuras metálicas</li>
+                            <li><i class="fas fa-check"></i> Tanques industriales</li>
+                            <li><i class="fas fa-check"></i> Escaleras y barandales</li>
+                            <li><i class="fas fa-check"></i> Puertas y portones</li>
+                        </ul>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='fabricacion.html'">
+                            <i class="fas fa-arrow-right"></i> Ver Detalles
+                        </button>
+                        <button class="btn btn-outline"
+                            onclick="window.location.href='catalogo.html?servicio=fabricacion'">
+                            <i class="fas fa-folder-open"></i> Ver Catálogo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Soldadura -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="service-content">
+                        <h2>Soldadura</h2>
+                        <p>Servicios especializados de soldadura MIG, TIG, arco eléctrico y soldadura de precisión.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Soldadura MIG/MAG</li>
+                            <li><i class="fas fa-check"></i> Soldadura TIG</li>
+                            <li><i class="fas fa-check"></i> Arco eléctrico</li>
+                            <li><i class="fas fa-check"></i> Soldadura de aluminio</li>
+                        </ul>
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn primary" onclick="window.location.href='soldadura.html'">
+                            <i class="fas fa-arrow-right"></i> Ver Detalles
+                        </button>
+                        <button class="btn btn-outline"
+                            onclick="window.location.href='catalogo.html?servicio=soldadura'">
+                            <i class="fas fa-folder-open"></i> Ver Catálogo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,182,47,0.1)); border-radius: 20px;">
+                <h3 style="margin-bottom: 1rem;">¿No encuentra lo que busca?</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.8;">Contáctenos y con gusto le atenderemos</p>
+                <button class="btn btn-primary" onclick="window.location.href='contacto.html'">
+                    <i class="fas fa-phone"></i> Contactar Ahora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Dinámico -->
+    <div id="footer-container"></div>
+    <script>
+        fetch('includes/footer.html')
+            .then(response => response.text())
+            .then(html => { document.getElementById('footer-container').innerHTML = html; });
+    </script>
+</body>
+
+</html>

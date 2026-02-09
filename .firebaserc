@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "osconpe"
+  },
+  "targets": {
+    "osconpe": {
+      "hosting": {
+        "oscon": [
+          "oscon"
+        ]
+      }
+    }
+  }
+}
