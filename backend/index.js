@@ -1,83 +1,78 @@
-
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
 const express = require('express');
+const bcrypt = require('bcrypt');
+const admin = require('firebase-admin');
 const multer = require('multer');
-const cors = require('cors');
 
 // Initialize Firebase Admin SDK
-admin.initializeApp();
+const serviceAccount = require('./firebase-credentials.json');
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: 'your-storage-bucket-name.appspot.com'
+});
 
+const db = admin.firestore();
+const bucket = admin.storage().bucket();
 const app = express();
-app.use(cors({ origin: true }));
+app.use(express.json());
+app.use(express.static('../frontend'));
 
-// Multer is used to handle file uploads
-const upload = multer({ storage: multer.memoryStorage() });
+// User registration (for initial setup)
+app.post('/register', async (req, res) => {
+    const { email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await db.collection('users').doc(email).set({ password: hashedPassword });
+    res.status(201).send({ message: 'User registered successfully' });
+});
 
-// Middleware to authenticate users
-const authenticate = async (req, res, next) => {
-  if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer ')) {
-    res.status(403).send('Unauthorized');
-    return;
-  }
-  const idToken = req.headers.authorization.split('Bearer ')[1];
-  try {
-    const decodedIdToken = await admin.auth().verifyIdToken(idToken);
-    req.user = decodedIdToken;
-    next();
-    return;
-  } catch (e) {
-    res.status(403).send('Unauthorized');
-    return;
-  }
-};
-
-// Login endpoint
+// User login
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    try {
-        // This is a placeholder for a custom token generation. 
-        // For a real app, you would verify the user/password against your user database
-        // and then create a custom token.
-        const user = await admin.auth().getUserByEmail(email);
-        // IMPORTANT: The following is NOT a real password check and is insecure.
-        // It's a placeholder to allow you to get a token for a user that already exists in Firebase Auth.
-        // In a real application, you would NOT have access to the user's password.
-        // You would use the Firebase client-side SDK to sign in the user and get an ID token.
-        const customToken = await admin.auth().createCustomToken(user.uid);
-        res.status(200).send({ token: customToken });
-
-    } catch (error) {
-        res.status(401).send({ message: 'Invalid credentials' });
+    const userDoc = await db.collection('users').doc(email).get();
+    if (!userDoc.exists) {
+        return res.status(401).send({ message: 'Invalid credentials' });
     }
+    const user = userDoc.data();
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+        return res.status(401).send({ message: 'Invalid credentials' });
+    }
+    res.status(200).send({ message: 'Login successful' });
 });
 
-// File upload endpoint
-app.post('/upload', authenticate, upload.single('file'), async (req, res) => {
-  if (!req.file) {
-    res.status(400).send('No file uploaded.');
-    return;
-  }
+// Multer setup for file uploads
+const upload = multer({ storage: multer.memoryStorage() });
 
-  const bucket = admin.storage().bucket();
-  const { folder, name } = req.body;
-  const blob = bucket.file(`${folder}/${name}`);
+// Video upload
+app.post('/upload-video', upload.single('video'), async (req, res) => {
+    const { title } = req.body;
+    const file = req.file;
+    const blob = bucket.file(`videos/${file.originalname}`);
+    const blobStream = blob.createWriteStream();
 
-  const blobStream = blob.createWriteStream({
-    metadata: {
-      contentType: req.file.mimetype,
-    },
-  });
-
-  blobStream.on('error', (err) => {
-    res.status(500).send({ message: err.message });
-  });
-
-  blobStream.on('finish', () => {
-    res.status(200).send({ message: 'File uploaded successfully' });
-  });
-
-  blobStream.end(req.file.buffer);
+    blobStream.on('error', (err) => res.status(500).send(err));
+    blobStream.on('finish', async () => {
+        await db.collection('videos').add({ title, fileName: file.originalname });
+        res.status(201).send({ message: 'Video uploaded successfully' });
+    });
+    blobStream.end(file.buffer);
 });
 
-exports.api = functions.https.onRequest(app);
+// Flyer upload
+app.post('/upload-flyer', upload.single('flyer'), async (req, res) => {
+    const { title } = req.body;
+    const file = req.file;
+    const blob = bucket.file(`flyers/${file.originalname}`);
+    const blobStream = blob.createWriteStream();
+
+    blobStream.on('error', (err) => res.status(500).send(err));
+    blobStream.on('finish', async () => {
+        await db.collection('flyers').add({ title, fileName: file.originalname });
+        res.status(201).send({ message: 'Flyer uploaded successfully' });
+    });
+    blobStream.end(file.buffer);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
